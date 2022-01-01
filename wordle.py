@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from collections import defaultdict
 from itertools import combinations
 import sys
@@ -39,7 +41,7 @@ def main(args):
             next_chars = set(chars) - (set(best) - set(exclusions))
             char_scores = score_chars(next_chars, words)
             next_choices = score_words(words, char_scores)
-            print(",".join(exclusions), ": ", max(next_choices, key=next_choices.get))
+            print("{}: {}".format(",".join(exclusions), max(next_choices, key=next_choices.get)))
 
 
 if __name__ == '__main__':

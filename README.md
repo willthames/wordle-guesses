@@ -19,37 +19,37 @@ remain for completion
 First line is the best guess, second line is if no letters match, and the other lines are what to choose if letters match
 ```
 aeros
- :  unlit
-a :  dital
-e :  elint
-r :  trild
-o :  doilt
-s :  lints
-a,e :  telia
-a,r :  liart
-a,o :  aloin
-a,s :  alist
-e,r :  liter
-e,o :  teloi
-e,s :  islet
-r,o :  lirot
-r,s :  tirls
-o,s :  toils
-a,e,r :  ariel
-a,e,o :  alone
-a,e,s :  aisle
-a,r,o :  ariot
-a,r,s :  arils
-a,o,s :  iotas
-e,r,o :  oiler
-e,r,s :  leirs
-e,o,s :  solei
-r,o,s :  loirs
-a,e,r,o :  realo
-a,e,r,s :  aesir
-a,e,o,s :  aloes
-a,r,o,s :  orals
-e,r,o,s :  osier
+: until
+a: tidal
+e: elint
+r: trild
+o: doilt
+s: lints
+a,e: telia
+a,r: trial
+a,o: aloin
+a,s: tails
+e,r: relit
+e,o: teloi
+e,s: steil
+r,o: lirot
+r,s: tirls
+o,s: toils
+a,e,r: ariel
+a,e,o: alone
+a,e,s: aisle
+a,r,o: ratio
+a,r,s: lairs
+a,o,s: iotas
+e,r,o: oriel
+e,r,s: liers
+e,o,s: solei
+r,o,s: roils
+a,e,r,o: realo
+a,e,r,s: aesir
+a,e,o,s: aloes
+a,r,o,s: soral
+e,r,o,s: osier
 ```
 
 # Generating the wordlist
@@ -67,5 +67,5 @@ curl https://www.powerlanguage.co.uk/wordle/main.db1931a8.js | \
 
 The wordle.py script takes a word list (generated above or included in the source) as first argument
 ```
-python wordle.py words
+./wordle.py words
 ```
