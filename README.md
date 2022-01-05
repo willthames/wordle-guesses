@@ -71,3 +71,47 @@ The wordle.py script takes a word list (generated above or included in the sourc
 ```
 ./wordle.py words
 ```
+
+
+# Character scores
+
+This is a an interesting aside prompted by a [friend's tweet that the most
+common letters are `ETAINOSHRDLU`](https://twitter.com/nefarioustim/status/1478537147363643392)
+- this is true across all English words,
+but not for 5 letter words - whether Wordle words or otherwise.
+
+The count of words that a letter appears in on valid Wordle words looks like:
+
+```
+s: 5936
+e: 5705
+a: 5330
+o: 3911
+r: 3909
+i: 3589
+l: 3114
+t: 3033
+n: 2787
+u: 2436
+d: 2298
+y: 2031
+c: 1920
+p: 1885
+m: 1868
+h: 1708
+g: 1543
+b: 1519
+k: 1444
+w: 1028
+f: 990
+v: 674
+z: 391
+j: 289
+x: 287
+q: 111
+```
+
+(this is reproducible using `python scores.py words`)
+
+Note that scoring based on the number of times a letter appears rather than the number of words it
+appears in seems to have almost no impact on the order of the scores or the suggestions made.
