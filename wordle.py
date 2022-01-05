@@ -5,6 +5,16 @@ from itertools import combinations
 import sys
 
 
+def maxes(scores):
+    top = sorted(scores.items(), key=lambda x: x[1], reverse=True)
+    result = [top[0][0]]
+    for item in top[1:]:
+        if item[1] != top[0][1]:
+            break
+        result.append(item[0])
+    return result
+
+
 def read_words(filename):
     with open(filename) as fp:
         return [word.strip() for word in fp.readlines()
@@ -34,14 +44,14 @@ def main(args):
     words = read_words(args[0])
     char_scores = score_chars(chars, words)
     word_scores = score_words(words, char_scores)
-    best = max(word_scores, key=word_scores.get)
-    print(best)
+    best = maxes(word_scores)
+    print(", ".join(best))
     for i in range(0, 5):
-        for exclusions in combinations(best, i):
-            next_chars = set(chars) - (set(best) - set(exclusions))
+        for exclusions in combinations(best[0], i):
+            next_chars = set(chars) - (set(best[0]) - set(exclusions))
             char_scores = score_chars(next_chars, words)
             next_choices = score_words(words, char_scores)
-            print("{}: {}".format(",".join(exclusions), max(next_choices, key=next_choices.get)))
+            print("{}: {}".format(",".join(exclusions), ", ".join(maxes(next_choices))))
 
 
 if __name__ == '__main__':

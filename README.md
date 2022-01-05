@@ -16,39 +16,41 @@ remain for completion
 
 # Results
 
-First line is the best guess, second line is if no letters match, and the other lines are what to choose if letters match
+First line has the best guesses, second line is if no letters match, and the other lines are what are the suggested
+choices if letters match (which is best may depend on where the matches occur):
+
 ```
-aeros
-: until
-a: tidal
-e: elint
+aeros, arose, soare
+: unlit, until
+a: dital, tidal
+e: elint, enlit, inlet, intel, lenti
 r: trild
 o: doilt
 s: lints
 a,e: telia
-a,r: trial
+a,r: liart, trail, trial
 a,o: aloin
-a,s: tails
-e,r: relit
-e,o: teloi
-e,s: steil
-r,o: lirot
+a,s: alist, litas, tails
+e,r: liter, litre, relit, tiler
+e,o: teloi, toile
+e,s: islet, istle, lites, steil, stile, teils, tiles
+r,o: lirot, triol
 r,s: tirls
 o,s: toils
-a,e,r: ariel
-a,e,o: alone
+a,e,r: ariel, raile
+a,e,o: alone, anole
 a,e,s: aisle
-a,r,o: ratio
-a,r,s: lairs
-a,o,s: iotas
-e,r,o: oriel
-e,r,s: liers
+a,r,o: ariot, ratio
+a,r,s: arils, lairs, laris, liars, liras, rails, rials
+a,o,s: iotas, ostia, stoai
+e,r,o: oiler, oriel, reoil
+e,r,s: leirs, liers, riels, riles, siler, slier
 e,o,s: solei
-r,o,s: roils
+r,o,s: loirs, loris, roils
 a,e,r,o: realo
-a,e,r,s: aesir
+a,e,r,s: aesir, arise, raise, reais, serai
 a,e,o,s: aloes
-a,r,o,s: soral
+a,r,o,s: orals, solar, soral
 e,r,o,s: osier
 ```
 
