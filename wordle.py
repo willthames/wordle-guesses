@@ -25,6 +25,9 @@ def read_words(filename):
 def score_chars(chars, words):
     scores = defaultdict(int)
     for word in words:
+        # ignore plurals and third-person singular verb forms
+        if word[3] != "s" and word[4] == "s":
+            continue
         for char in chars:
             if char in word:
                 scores[char] += 1

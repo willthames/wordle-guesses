@@ -3,9 +3,12 @@
 wordle.py generates the first two guesses for wordle based on Wordle's word list
 
 The algorithm used to score words is:
-* score all letters based on the number of eligible words they appear in
+* score all letters based on the number of likely words they appear in
 * score all eligible words based on the sum of the scores of the *distinct* letters in the words
 * choose the best
+
+Likely words exclude words ending in a single 's' - plurals and third person singular verb forms,
+as these don't seem to come up in answers - however, they can still be useful as guesses.
 
 For each combination of letters in the best word, we then choose the next words based on the
 scores of words containing that combination of letters but none of the other letters from the word
@@ -20,38 +23,38 @@ First line has the best guesses, second line is if no letters match, and the oth
 choices if letters match (which is best may depend on where the matches occur):
 
 ```
-aeros, arose, soare
-: unlit, until
-a: dital, tidal
-e: elint, enlit, inlet, intel, lenti
-r: trild
-o: doilt
-s: lints
-a,e: telia
-a,r: liart, trail, trial
-a,o: aloin
-a,s: alist, litas, tails
-e,r: liter, litre, relit, tiler
-e,o: teloi, toile
-e,s: islet, istle, lites, steil, stile, teils, tiles
-r,o: lirot, triol
-r,s: tirls
-o,s: toils
-a,e,r: ariel, raile
-a,e,o: alone, anole
-a,e,s: aisle
-a,r,o: ariot, ratio
-a,r,s: arils, lairs, laris, liars, liras, rails, rials
-a,o,s: iotas, ostia, stoai
-e,r,o: oiler, oriel, reoil
-e,r,s: leirs, liers, riels, riles, siler, slier
-e,o,s: solei
-r,o,s: loirs, loris, roils
-a,e,r,o: realo
-a,e,r,s: aesir, arise, raise, reais, serai
-a,e,o,s: aloes
-a,r,o,s: orals, solar, soral
-e,r,o,s: osier
+realo
+: dints, tinds
+r: snirt, trins
+e: inset, neist, nites, senti, sient, stein, teins, tines
+a: antis, natis, saint, satin, stain, tains, tians, tinas
+l: lints
+o: oints
+r,e: inert, inter, niter, nitre, trine
+r,a: intra, riant, train
+r,l: tirls
+r,o: intro, nitro
+e,a: entia, tenia, tinea
+e,l: elint, enlit, inlet, intel, lenti
+e,o: toise
+a,l: alist, litas, tails
+a,o: iotas, ostia, stoai
+l,o: toils
+r,e,a: irate, retia, terai
+r,e,l: liter, litre, relit, tiler
+r,e,o: irone
+r,a,l: liart, trail, trial
+r,a,o: ariot, ratio
+r,l,o: lirot, triol
+e,a,l: telia
+e,a,o: atone, oaten
+e,l,o: teloi, toile
+a,l,o: aloin
+r,e,a,l: ariel, raile
+r,e,a,o: oater, orate, roate
+r,e,l,o: oiler, oriel, reoil
+r,a,l,o: ariot, ratio
+e,a,l,o: alone, anole
 ```
 
 # Generating the wordlist
@@ -80,38 +83,40 @@ common letters are `ETAINOSHRDLU`](https://twitter.com/nefarioustim/status/14785
 - this is true across all English words,
 but not for 5 letter words - whether Wordle words or otherwise.
 
-The count of words that a letter appears in on valid Wordle words looks like:
+The count of words that a letter appears in on likely Wordle words looks like:
 
 ```
-s: 5936
-e: 5705
-a: 5330
-o: 3911
-r: 3909
-i: 3589
-l: 3114
-t: 3033
-n: 2787
-u: 2436
-d: 2298
-y: 2031
-c: 1920
-p: 1885
-m: 1868
-h: 1708
-g: 1543
-b: 1519
-k: 1444
-w: 1028
-f: 990
-v: 674
-z: 391
-j: 289
-x: 287
-q: 111
+e: 4274
+a: 3865
+r: 2969
+o: 2805
+i: 2633
+l: 2257
+t: 2243
+n: 2084
+s: 2013
+d: 1762
+y: 1761
+u: 1722
+c: 1471
+p: 1344
+m: 1320
+h: 1317
+g: 1136
+b: 1087
+k: 900
+w: 709
+f: 657
+v: 513
+z: 309
+x: 216
+j: 188
+q: 90
 ```
 
 (this is reproducible using `python scores.py words`)
 
 Note that scoring based on the number of times a letter appears rather than the number of words it
 appears in seems to have almost no impact on the order of the scores or the suggestions made.
+
+Again we now ignore words ending in a single 's' in these scores.
