@@ -34,9 +34,11 @@ def score_chars(chars, words):
     return scores
 
 
-def score_words(words, char_scores):
+def score_words(words, char_scores, exclusions=None):
     scores = defaultdict(int)
     for word in words:
+        if exclusions and not set(word).issuperset(exclusions):
+            continue
         for char in set(word):
             scores[word] += char_scores[char]
     return scores
@@ -53,7 +55,7 @@ def main(args):
         for exclusions in combinations(best[0], i):
             next_chars = set(chars) - (set(best[0]) - set(exclusions))
             char_scores = score_chars(next_chars, words)
-            next_choices = score_words(words, char_scores)
+            next_choices = score_words(words, char_scores, exclusions)
             print("{}: {}".format(",".join(exclusions), ", ".join(maxes(next_choices))))
 
 
