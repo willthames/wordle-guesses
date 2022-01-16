@@ -53,7 +53,7 @@ a,l,o: aloin
 r,e,a,l: ariel, raile
 r,e,a,o: oater, orate, roate
 r,e,l,o: oiler, oriel, reoil
-r,a,l,o: ariot, ratio
+r,a,l,o: rotal, tolar
 e,a,l,o: alone, anole
 ```
 
